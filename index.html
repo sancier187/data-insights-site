@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Data Insights - Transformando Dados em Soluções</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            color: #333;
+        }
+        header {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 40px;
+            background-image: url('header-bg.jpg');
+            background-size: cover;
+            background-position: center;
+            text-align: left;
+        }
+        header img {
+            width: 150px;
+            height: auto;
+            margin-right: 20px;
+        }
+        header h1 {
+            margin: 0;
+            color: #002b5c; /* Azul aplicado ao título */
+        }
+        header p {
+            margin: 0;
+            color: #002b5c; /* Azul aplicado ao subtítulo */
+        }
+        nav ul {
+            list-style: none;
+            padding: 0;
+            text-align: center;
+        }
+        nav ul li {
+            display: inline;
+            margin: 0 15px;
+        }
+        nav ul li a {
+            color: #002b5c; /* Azul aplicado aos links do menu */
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 18px;
+        }
+        nav ul li a:hover {
+            color: #add8e6;
+            text-decoration: underline;
+            transition: color 0.3s ease;
+        }
+        section {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+            padding: 60px;
+            background: white;
+            margin: 40px auto;
+            width: 80%;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+        }
+        section.aparecer {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        footer {
+            background: #002b5c;
+            color: white;
+            text-align: center;
+            padding: 20px;
+            margin-top: 20px;
+        }
+        .cta-fixo {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: #004080;
+            color: white;
+            padding: 15px 20px;
+            border-radius: 10px;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        .cta-fixo:hover {
+            background: #005bb5;
+        }
+        .social-links a {
+            color: white;
+            margin: 0 10px;
+            text-decoration: none;
+            font-size: 18px;
+        }
+        .social-links a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <img src="A_logo_for_a_company_named_Data_Insights_consist.png" alt="Data Insights Logo">
+        <div>
+            <h1>Data Insights</h1>
+            <p>Transformando dados em informações valiosas</p>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="#sobre">Sobre</a></li>
+                <li><a href="#servicos">Serviços</a></li>
+                <li><a href="#clientes">Clientes</a></li>
+                <li><a href="#contato">Contato</a></li>
+            </ul>
+        </nav>
+    </header>
+    
+    <section id="sobre">
+        <h2>Sobre Nós</h2>
+        <p>A Data Insights é uma empresa líder em análise de dados, ajudando organizações a transformar dados em insights estratégicos.</p>
+    </section>
+    
+    <section id="servicos">
+        <h2>Nossos Serviços</h2>
+        <canvas id="grafico"></canvas>
+        <script>
+            const ctx = document.getElementById('grafico').getContext('2d');
+            new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: ['2021', '2022', '2023', '2024'],
+                    datasets: [{
+                        label: 'Crescimento de Análises de Dados',
+                        data: [50, 100, 200, 400],
+                        backgroundColor: '#002b5c'
+                    }]
+                }
+            });
+        </script>
+    </section>
+    
+    <section id="clientes">
+        <h2>Clientes Satisfeitos</h2>
+        <p>Com nossas soluções, empresas aumentaram sua eficiência e reduziram custos.</p>
+    </section>
+    
+    <section id="contato">
+        <h2>Entre em Contato</h2>
+        <p>Email: contato@datainsights.com</p>
+        <p>Telefone: (11) 99999-9999</p>
+        <div class="social-links">
+            <p>Siga-nos nas redes sociais:</p>
+            <a href="#">LinkedIn</a>
+            <a href="#">Twitter</a>
+            <a href="#">Instagram</a>
+        </div>
+    </section>
+    
+    <section id="comentarios">
+        <h2>Deixe seu Comentário</h2>
+        <form class="contact-form">
+            <label for="nome">Nome (opcional):</label>
+            <input type="text" id="nome" name="nome" placeholder="Seu nome">
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" placeholder="Seu email" required>
+            <label for="telefone">Número de Contato:</label>
+            <input type="tel" id="telefone" name="telefone" placeholder="Seu telefone">
+            <label for="mensagem">Comentário:</label>
+            <textarea id="mensagem" name="mensagem" rows="5" placeholder="Escreva seu comentário" required></textarea>
+            <button type="submit">Enviar</button>
+        </form>
+    </section>
+    
+    <footer>
+        <p>&copy; 2025 Data Insights - Todos os direitos reservados.</p>
+    </footer>
+    
+    <a href="#contato" class="cta-fixo">Fale Conosco</a>
+    
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const sections = document.querySelectorAll("section");
+            const aparecerSeções = () => {
+                sections.forEach(sec => {
+                    if (sec.getBoundingClientRect().top < window.innerHeight - 100) {
+                        sec.classList.add("aparecer");
+                    }
+                });
+            };
+            aparecerSeções();
+            window.addEventListener("scroll", aparecerSeções);
+        });
+    </script>
+</body>
+</html>
